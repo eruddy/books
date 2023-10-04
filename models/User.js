@@ -62,13 +62,13 @@ const User = sequelize.define(
           const tieneMayusculas = /[A-Z]/.test(value);
           const tieneMinusculas = /[a-z]/.test(value);
           const tieneNumeros = /\d/.test(value);
-          const tieneCaracterEspecial = /[@!#$%]/.test(value);
+          const tieneCaracterEspecial = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(value);
           if (
             value.length < longitudMinima ||
             !tieneMayusculas ||
             !tieneMinusculas ||
-            !tieneNumeros
-            //     || !tieneCaracterEspecial
+            !tieneNumeros||
+            !tieneCaracterEspecial
           ) {
             throw new Error(
               "La contraseña no cumple con los requisitos de complejidad"
